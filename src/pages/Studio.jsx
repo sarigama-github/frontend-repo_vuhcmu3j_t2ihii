@@ -6,10 +6,10 @@ export default function Studio() {
     <>
       <NavBar />
       <main>
-        <section className="bg-[linear-gradient(180deg,#F7EFE6,white)] py-16">
+        <section className="bg-cream py-16">
           <div className="max-w-5xl mx-auto px-4">
-            <h1 className="text-4xl font-bold text-navy mb-2">Voyage Studio</h1>
-            <p className="text-slate-700">UGC, photography, reels, 3D renderings, and drone fly-throughs — priced transparently.</p>
+            <h1 className="text-4xl font-bold text-forest mb-2">Voyage Studio</h1>
+            <p className="text-forest/80">UGC, photography, reels, 3D renderings, and drone fly-throughs — priced transparently.</p>
           </div>
         </section>
         <section className="py-12">
@@ -22,17 +22,17 @@ export default function Studio() {
               {name:'3D Location Renderings',desc:'Architectural 3D renders and walkthroughs.',price:'USD 900/render'},
               {name:'Packages',desc:'Combined packages for content & visuals with discounted rates.',price:'USD 1,800'},
             ].map((s)=> (
-              <div key={s.name} className="rounded-2xl bg-white p-6 border border-teal-100 shadow-[0_6px_20px_rgba(13,43,62,0.08)]">
+              <div key={s.name} className="rounded-2xl bg-cream p-6 border border-sage/30 shadow-[0_6px_20px_rgba(56,102,77,0.08)]">
                 <div className="flex items-baseline justify-between">
-                  <h3 className="font-semibold text-slate-900">{s.name}</h3>
-                  <div className="text-teal-700 text-sm">Starting {s.price}</div>
+                  <h3 className="font-semibold text-forest">{s.name}</h3>
+                  <div className="text-sage text-sm">Starting {s.price}</div>
                 </div>
-                <p className="text-slate-600 mt-2">{s.desc}</p>
+                <p className="text-forest/80 mt-2">{s.desc}</p>
               </div>
             ))}
           </div>
           <div className="max-w-5xl mx-auto px-4 mt-8 text-right">
-            <a href="/contact#quote" className="inline-flex px-5 py-3 rounded-full bg-navy text-white">Request a Quote</a>
+            <a href="/contact#quote" className="btn btn-forest">Request a Quote</a>
           </div>
         </section>
       </main>
