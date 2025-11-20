@@ -1,73 +1,77 @@
-function App() {
+import NavBar from './components/NavBar'
+import Footer from './components/Footer'
+import ChatWidget from './components/ChatWidget'
+
+function Section({ id, title, subtitle, children }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
-
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
-
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
+    <section id={id} className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {title && (
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-slate-900">{title}</h2>
+            {subtitle && <p className="text-slate-600 mt-2">{subtitle}</p>}
           </div>
-
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
-          </div>
-        </div>
+        )}
+        {children}
       </div>
-    </div>
+    </section>
   )
 }
 
-export default App
+function HomePage() {
+  return (
+    <>
+      <NavBar />
+      <main>
+        <section className="relative overflow-hidden bg-[linear-gradient(180deg,#F7EFE6,white)]">
+          <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-30" style={{background:"linear-gradient(135deg,#9AD3FF,#B3FFED,#EAD7FF)"}}></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-teal-700 font-semibold">Ben Venturing</p>
+              <h1 className="mt-3 text-5xl font-bold tracking-tight text-navy">Freedom • Adventure • Innovation</h1>
+              <p className="mt-4 text-lg text-slate-700">A lifestyle brand & creative hub blending faith, travel, and AI. Founder: Ben Graeff.</p>
+              <div className="mt-8 flex gap-3">
+                <a href="/untethered" className="px-5 py-3 rounded-full bg-teal-600 text-white hover:bg-teal-700">Explore Untethered</a>
+                <a href="/studio" className="px-5 py-3 rounded-full bg-white text-teal-700 border border-teal-200 hover:border-teal-300">See Voyage Studio</a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-video rounded-2xl bg-white/50 border border-teal-100 shadow-[0_20px_60px_rgba(13,43,62,0.10)] flex items-center justify-center">
+                <span className="text-slate-500">Hero media placeholder</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Section id="why" title="Why Ben Venturing" subtitle="We empower creative nomads to build freedom through entrepreneurship, guided by faith and modern AI.">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[{title:'Freedom & Travel',text:'Tools and stories for building location-independent lives.'},{title:'AI & Automation',text:'Practical AI workflows to streamline businesses.'},{title:'Community & Courses',text:'Untethered members learn together — courses, workshops, and coaching.'}].map((f)=> (
+              <div key={f.title} className="rounded-2xl bg-white p-6 border border-teal-100 shadow-[0_6px_20px_rgba(13,43,62,0.08)] hover:-translate-y-1 transition">
+                <h3 className="font-semibold text-slate-900">{f.title}</h3>
+                <p className="text-slate-600 mt-2">{f.text}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="cta" title="Start something worth wandering for" subtitle="Consultation, content, or AI automation — let's build it together.">
+          <div className="bg-gradient-to-r from-[#FFD8A8] via-[#FFAC81] to-[#FF7A59] rounded-2xl p-8 text-navy shadow-[0_20px_60px_rgba(13,43,62,0.10)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-bold">Book a Call</h3>
+                <p className="text-navy/80">Talk through ideas and get a simple plan.</p>
+              </div>
+              <a href="/contact#book" className="px-5 py-3 rounded-full bg-navy text-white hover:opacity-90">Get Started</a>
+            </div>
+          </div>
+        </Section>
+      </main>
+      <Footer />
+      <ChatWidget />
+    </>
+  )
+}
+
+export default function App() {
+  return <HomePage />
+}
